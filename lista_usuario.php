@@ -3,7 +3,7 @@ session_start();
 include 'conexao.php';
 include 'menu.php';
 
-$clientes = $conn->query("SELECT * FROM clientes")->fetchAll(PDO::FETCH_ASSOC);
+$usuarios = $conn->query("SELECT * FROM usuarios")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ $clientes = $conn->query("SELECT * FROM clientes")->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de clientes - Analog Echo Records</title>
+    <title>Lista de usuarios - Analog Echo Records</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -56,27 +56,27 @@ $clientes = $conn->query("SELECT * FROM clientes")->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <div class="container mt-4">
-    <h1 class="mb-4">Lista de Clientes</h1>
-    <a href="cadastrar.php" class="btn btn-success mb-3">Cadastrar Cliente</a>
+    <h1 class="mb-4">Lista de Usuário</h1>
+    <a href="cadastrar.php" class="btn btn-success mb-3">Cadastrar Usuário</a>
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
-                <th>Arquivo PDF</th>
+                <th>Nivel de acesso</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($clientes as $cliente): ?>
+            <?php foreach ($usuarios as $usuario): ?>
             <tr>
-                <td><?= htmlspecialchars($cliente['nome']) ?></td>
-                <td><?= htmlspecialchars($cliente['email']) ?></td>
-                <td><a href="uploads/<?= htmlspecialchars($cliente['arquivo_pdf']) ?>" target="_blank">Ver PDF</a></td>
+                <td><?= htmlspecialchars($usuario['nome']) ?></td>
+                <td><?= htmlspecialchars($usuario['email']) ?></td>
+                <td><?= htmlspecialchars($usuario['nivel_acesso']) ?></td>
                 <td>
                     <?php if ($_SESSION['nivel_acesso'] == 'ADMINISTRADOR'): ?>
-                        <a href="editar.php?id=<?= $cliente['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="excluir.php?id=<?= $cliente['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('A exclusão será permanente! Tem certeza disso?')">Excluir</a>
+                        <a href="editar_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="excluir_usuario.php?id=<?= $usuario['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('A exclusão será permanente! Tem certeza disso?')">Excluir</a>
                     <?php else: ?>
                         <span class="text-muted">Sem permissão</span>
                     <?php endif; ?>
