@@ -11,15 +11,55 @@ $clientes = $conn->query("SELECT * FROM clientes")->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de clientes</title>
+    <title>Lista de clientes - Analog Echo Records</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f2e7;
+            color: #4a3623;
+        }
+        .container {
+            max-width: 80%;
+        }
+        h1 {
+            font-weight: bold;
+            color: #4a3623;
+        }
+        .btn-success {
+            background-color: #555;
+            border-color: #555;
+            color: #f5f2e7;
+        }
+        .btn-success:hover {
+            background-color: #3c3c3c;
+            border-color: #3c3c3c;
+        }
+        .btn-danger {
+            background-color: #7a1f1f;
+            border-color: #7a1f1f;
+            color: #f5f2e7;
+        }
+        .btn-danger:hover {
+            background-color: #992626;
+            border-color: #992626;
+        }
+        .btn-warning {
+            background-color: #777;
+            border-color: #777;
+            color: #f5f2e7;
+        }
+        .btn-warning:hover {
+            background-color: #3c3c3c;
+            border-color: #3c3c3c;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <h1 class="mt-4">Lista de Clientes</h1>
+<div class="container mt-4">
+    <h1 class="mb-4">Lista de Clientes</h1>
     <a href="cadastrar.php" class="btn btn-success mb-3">Cadastrar Cliente</a>
     <table class="table table-bordered">
-        <thead>
+        <thead class="thead-dark">
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
@@ -35,8 +75,8 @@ $clientes = $conn->query("SELECT * FROM clientes")->fetchAll(PDO::FETCH_ASSOC);
                 <td><a href="uploads/<?= htmlspecialchars($cliente['arquivo_pdf']) ?>" target="_blank">Ver PDF</a></td>
                 <td>
                     <?php if ($_SESSION['nivel_acesso'] == 'ADMINISTRADOR'): ?>
-                        <a href="editar.php?id=<?= $cliente['id'] ?>" class="btn btn-warning">Editar</a>
-                        <a href="excluir.php?id=<?= $cliente['id'] ?>" class="btn btn-danger" onclick="return confirm('A exclusão será permanente! Tem certeza disso?')">Excluir</a>
+                        <a href="editar.php?id=<?= $cliente['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="excluir.php?id=<?= $cliente['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('A exclusão será permanente! Tem certeza disso?')">Excluir</a>
                     <?php else: ?>
                         <span class="text-muted">Sem permissão</span>
                     <?php endif; ?>

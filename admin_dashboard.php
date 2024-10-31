@@ -20,7 +20,7 @@ include 'menu.php'; // Incluir o menu (navbar) no topo do arquivo
         <a href="lista_clientes.php" class="btn btn-primary btn-lg btn-block">Lista de Clientes</a>
       </div>
       <div class="col-md-4">
-        <a href="lista_usuarios.php" class="btn btn-secondary btn-lg btn-block">Lista de Usuários</a>
+        <a href="lista_usuario.php" class="btn btn-secondary btn-lg btn-block">Lista de Usuários</a>
       </div>
       <div class="col-md-4">
         <a href="lista_produtos.php" class="btn btn-secondary btn-lg btn-block">Lista de produtos</a>

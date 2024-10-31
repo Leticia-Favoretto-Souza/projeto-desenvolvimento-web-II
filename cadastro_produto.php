@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'conexao.php'; // Conexão com banco de dados
+include 'conexao.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $preco = $_POST['preco'];
     $qtd = $_POST['qtd'];
 
-    // Verifica se a imagem foi enviada
     if (isset($_FILES['imagem']['name']) && $_FILES['imagem']['error'] == 0) {
         echo 'Você enviou o arquivo: <strong>' . $_FILES['imagem']['name'] . '</strong><br />';
         echo 'Este arquivo é do tipo: <strong>' . $_FILES['imagem']['type'] . '</strong><br />';
@@ -20,19 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $arquivo_tmp = $_FILES['imagem']['tmp_name'];
         $nomeImagem = $_FILES['imagem']['name'];
 
-        // Pega a extensão
         $extensao = pathinfo($nomeImagem, PATHINFO_EXTENSION);
         $extensao = strtolower($extensao);
 
-        // Permite apenas certos tipos de imagem
         if (strstr('.jpg;.jpeg;.gif;.png', $extensao)) {
-            // Cria um nome único para a imagem
             $novoNome = uniqid(time()) . '.' . $extensao;
 
-            // Define o destino
             $destino = 'uploads/' . $novoNome;
 
-            // Tenta mover o arquivo para o destino
             if (@move_uploaded_file($arquivo_tmp, $destino)) {
                 echo 'Arquivo salvo com sucesso em: <strong>' . $destino . '</strong><br />';
                 $imagem = $destino;
@@ -49,13 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Insere o produto no banco de dados
     $sql = "INSERT INTO produtos (nome, artista, ano, descricao, preco, quantidade, imagem) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->execute([$nome, $artista, $ano, $descricao, $preco, $qtd, $imagem]);
 
     echo "<div class='alert alert-success'>Produto registrado com sucesso!</div>";
-    header('Location: lista_produtos.php'); // Redireciona para a lista de produtos
+    header('Location: lista_produtos.php'); 
 }
 ?>
 

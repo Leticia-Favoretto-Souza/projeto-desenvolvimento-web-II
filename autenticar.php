@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($usuario['nivel_acesso'] == 'ADMINISTRADOR') {
             header('Location: admin_dashboard.php');
         } elseif ($usuario['nivel_acesso'] == 'COMUM') {
-            header('Location: lista_clientes.php');
+            header('Location: lista_produtos.php');
         } else {
             header('Location: index.php');
         }

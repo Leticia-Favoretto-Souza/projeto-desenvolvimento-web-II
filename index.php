@@ -13,6 +13,17 @@ $clientes = $conn->query("SELECT * FROM clientes")->fetchAll(PDO::FETCH_ASSOC);
     <title>Sistema Shop - Página Inicial</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            background-image: url('logos/imagem-fundo.webp'); /* Adicione o caminho da sua imagem aqui */
+            background-size: cover; /* Faz com que a imagem cubra toda a área */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Não repete a imagem */
+            background-attachment: fixed; /* Mantém a imagem fixa na tela */
+
+        }
+        h2{
+            color: #fcfcfc
+        }
         .logo-clientes img {
             width: 150px;
             margin: 30px;
@@ -73,7 +84,7 @@ $clientes = $conn->query("SELECT * FROM clientes")->fetchAll(PDO::FETCH_ASSOC);
 <div class="container">
     <div class="menu-acesso">
         <div>
-            <span id="data-hora"></span> 
+            <span id="data-hora" class="text-white font-weight-bold"></span> 
         </div>
         <div>
             <a href="login.php" class="btn btn-success">Fazer login</a>

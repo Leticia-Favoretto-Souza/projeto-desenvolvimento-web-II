@@ -26,38 +26,5 @@
 </nav>
 
 <!-- Inclua Bootstrap -->
- <style>
-    /* Estilos para a barra de navegação */
-    .navbar {
-        background-color: #fffaf0; /* Fundo bege suave */
-    }
-
-    .navbar-brand {
-        color: #8B4513; /* Cor marrom para o título */
-    }
-
-    .navbar-brand:hover {
-        color: #5a2e1c; /* Cor ao passar o mouse */
-    }
-
-    .nav-link {
-        color: #8B4513; /* Cor marrom para os links */
-    }
-
-    .nav-link:hover {
-        color: #5a2e1c; /* Cor ao passar o mouse nos links */
-    }
-
-    .nav-item .btn-outline-danger {
-        border-color: #8B4513; /* Borda do botão sair */
-        color: #8B4513; /* Cor do texto do botão sair */
-    }
-
-    .nav-item .btn-outline-danger:hover {
-        background-color: #8B4513; /* Fundo do botão sair ao passar o mouse */
-        color: #fff; /* Texto em branco ao passar o mouse */
-    }
-</style>
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

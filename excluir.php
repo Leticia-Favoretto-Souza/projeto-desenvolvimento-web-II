@@ -14,6 +14,6 @@ if (file_exists('uploads/' . $cliente['arquivo_pdf'])) {
 $stmt = $conn->prepare("DELETE FROM clientes WHERE id = ?");
 $stmt->execute([$id]);
 
-header("Location: index.php");
+header("Location: lista_clientes.php");
 exit;
 ?>
